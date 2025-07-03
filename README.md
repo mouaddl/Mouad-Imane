@@ -123,7 +123,7 @@
     <h2>Suivi du poids</h2>
     <form id="weight-form">
       <input type="date" id="weight-date">
-      <input type="number" id="weight-input" placeholder="Poids (kg)">
+      <input type="text" id="weight-input" placeholder="Poids (kg)">
       <button type="submit">Ajouter</button>
     </form>
     <div id="weight-list"></div>
@@ -313,28 +313,4 @@
     document.getElementById('weight-form').addEventListener('submit', e => {
       e.preventDefault();
       const date = document.getElementById('weight-date').value;
-      const weight = parseFloat(document.getElementById('weight-input').value);
-      if (date && weight) {
-        weightHistory.push({ date, weight });
-        saveWeights();
-        renderWeights();
-        renderChart();
-        e.target.reset();
-      }
-    });
-
-    document.getElementById('date').addEventListener('change', e => {
-      const date = e.target.value;
-      updateGoalsForm(getOrInitDay(date).goals);
-      update(date);
-    });
-
-    initDate();
-    const today = getToday();
-    updateGoalsForm(getOrInitDay(today).goals);
-    update(today);
-    renderWeights();
-    renderChart();
-  </script>
-</body>
-</html>
+      const rawValue = document.getElementById('weight-input').value.trim().re
